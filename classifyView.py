@@ -19,9 +19,9 @@ import numpy as np
 # plt.ioff()
 
 def pretty_picture(clf, x_test, y_test, file_name="test"):
-    x_min = 0.0;
+    x_min = 0.0
     x_max = 1.0
-    y_min = 0.0;
+    y_min = 0.0
     y_max = 1.0
 
     # Plot the decision boundary. For that, we will assign a color to each

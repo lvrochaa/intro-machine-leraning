@@ -11,6 +11,7 @@ from prepTerrainData import make_terrain_data
 from classifyView import pretty_picture, output_image
 import classifyNB as nb
 import classifySVM as svm
+import classifyDT as dt
 
 features_train, labels_train, features_test, labels_test = make_terrain_data()
 # grade_fast = [features_train[ii][0] for ii in range(0, len(features_train)) if labels_train[ii] == 0]
@@ -20,16 +21,21 @@ features_train, labels_train, features_test, labels_test = make_terrain_data()
 
 clfNB = nb.classify_nb(features_train, labels_train)
 acuryNB = nb.nb_accuracy(clfNB, features_test, labels_test)
-
-clfSVM = svm.classify_svm(features_train, labels_train)
-acurySVM = svm.svm_accuracy(clfSVM, features_test, labels_test)
-
 filename = "graphicNB"
 pretty_picture(clfNB, features_test, labels_test, filename)
 output_image("graficoNB.png", "png", open(filename+".png", "rb").read())
 print("Taxa de acerto de Navie Bayes: {}".format(acuryNB))
 
+clfSVM = svm.classify_svm(features_train, labels_train)
+acurySVM = svm.svm_accuracy(clfSVM, features_test, labels_test)
 filename = "graphicSVM"
 pretty_picture(clfSVM, features_test, labels_test, filename)
 output_image(filename+".png", "png", open(filename+".png", "rb").read())
 print("Taxa de acerto do SVM: {}".format(acurySVM))
+
+clfDT = dt.classify_dt(features_train, labels_train)
+acuryDT = dt.svm_accuracy(clfDT, features_test, labels_test)
+filename = "graphicDT"
+pretty_picture(clfDT, features_test, labels_test, filename)
+output_image(filename+".png", "png", open(filename+".png", "rb").read())
+print("Taxa de acerto do DT: {}".format(acurySVM))
