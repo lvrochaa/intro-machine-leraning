@@ -34,8 +34,8 @@ output_image(filename+".png", "png", open(filename+".png", "rb").read())
 print("Taxa de acerto do SVM: {}".format(acurySVM))
 
 clfDT = dt.classify_dt(features_train, labels_train)
-acuryDT = dt.svm_accuracy(clfDT, features_test, labels_test)
+acuryDT = dt.dt_accuracy(clfDT, features_test, labels_test)
 filename = "graphicDT"
 pretty_picture(clfDT, features_test, labels_test, filename)
 output_image(filename+".png", "png", open(filename+".png", "rb").read())
-print("Taxa de acerto do DT: {}".format(acurySVM))
+print("Taxa de acerto do DT: {}".format(acuryDT))
